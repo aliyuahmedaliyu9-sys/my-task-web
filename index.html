@@ -62,6 +62,13 @@
             font-size: 18px;
             font-weight: bold;
         }
+        .withdraw-btn {
+            background-color: #28a745;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -112,6 +119,8 @@
         </div>
         <button onclick="openTaskLink(this, 10, 'https://t.me/aliyu_task_channel')">ስራ</button>
     </div>
+
+    <button class="withdraw-btn" onclick="requestWithdrawal()">ብር ለመጠየቅ (Withdraw)</button>
 </div>
 
 <script>
@@ -123,6 +132,14 @@
         document.getElementById('points').innerText = totalPoints;
         button.innerText = 'ተጠናቋል ✓';
         button.disabled = true;
+    }
+
+    function requestWithdrawal() {
+        if (totalPoints >= 1000) {
+            alert("እንኳን ደስ አለዎት! 1000 ነጥብ ሞልተዋል። እባክዎን የቴሌብር/ባንክ ቁጥርዎን ለቦቱ ይላኩ።");
+        } else {
+            alert("ብር ለማውጣት ቢያንስ 1000 ነጥብ ያስፈልግዎታል! አሁን ያለዎት ነጥብ፦ " + totalPoints);
+        }
     }
 </script>
 

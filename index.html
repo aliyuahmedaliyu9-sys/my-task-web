@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የታስክ መስሪያ ገጽ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .task-info {
+            text-align: left;
+        }
+        .task-info h4 {
+            margin: 0;
+            font-size: 15px;
+        }
+        .task-info p {
+            margin: 3px 0 0;
+            color: #666;
+            font-size: 13px;
+        }
+        button {
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .points-box {
+            background: #eef7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>የቀን ታስኮች</h2>
+    
+    <div class="points-box">
+        ያለዎ ነጥብ፦ <span id="points">0</span>
+    </div>
+
+    <div class="task">
+        <div class="task-info">
+            <h4>ቴሌግራም ቻናል ይቀላቀሉ</h4>
+            <p>+20 ነጥብ</p>
+        </div>
+        <button onclick="openTaskLink(this, 20, 'https://t.me')">ስራ</button>
+    </div>
+
+    <div class="task">
+        <div class="task-info">
+            <h4>ቪዲዮ ይመልከቱ</h4>
+            <p>+15 ነጥብ</p>
+        </div>
+        <button onclick="openTaskLink(this, 15, 'https://youtube.com')">ስራ</button>
+    </div>
+
+    <div class="task">
+        <div class="task-info">
+            <h4>ዩቲዩብ ሰብስክራይብ ያድርጉ</h4>
+            <p>+25 ነጥብ</p>
+        </div>
+        <button onclick="openTaskLink(this, 25, 'https://youtube.com')">ስራ</button>
+    </div>
+
+    <div class="task">
+        <div class="task-info">
+            <h4>ቲክቶክ ፎሎው ያድርጉ</h4>
+            <p>+30 ነጥብ</p>
+        </div>
+        <button onclick="openTaskLink(this, 30, 'https://tiktok.com')">ስራ</button>
+    </div>
+
+    <div class="task">
+        <div class="task-info">
+            <h4>ለጓደኛዎ ያጋሩ</h4>
+            <p>+10 ነጥብ</p>
+        </div>
+        <button onclick="openTaskLink(this, 10, 'https://t.me')">ስራ</button>
+    </div>
+</div>
+
+<script>
+    let totalPoints = 0;
+
+    function openTaskLink(button, points, url) {
+        window.open(url, '_blank');
+        totalPoints += points;
+        document.getElementById('points').innerText = totalPoints;
+        button.innerText = 'ተጠናቋል ✓';
+        button.disabled = true;
+    }
+</script>
+
+</body>
+</html>

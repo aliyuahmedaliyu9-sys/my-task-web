@@ -1,3 +1,84 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>የታስክ መስሪያ ገጽ</title>
+<style>
+body { font-family: sans-serif; text-align: center; padding: 15px; background: #f4f4f9; margin: 0; }
+.card { background: #fff; padding: 20px; border-radius: 12px; max-width: 400px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.task { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; }
+.task div { text-align: left; }
+.task h4 { margin: 0; font-size: 14px; }
+.task p { margin: 2px 0 0; color: #28a745; font-size: 12px; font-weight: bold; }
+button { background: #0088cc; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+button:disabled { background: #ccc; }
+.points-box { background: #eef7ff; padding: 12px; border-radius: 8px; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+.withdraw-btn { background: #28a745; color: #fff; width: 100%; padding: 12px; font-size: 16px; margin-top: 15px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2>የቀን ታስኮች</h2>
+  <div class="points-box">ያለዎ ነጥብ፦ <span id="points">0</span></div>
+
+  <div class="task">
+    <div><h4>ቴሌግራም ቻናል ይቀላቀሉ</h4><p>+200 ነጥብ</p></div>
+    <button id="btn1" onclick="openTask(this, 'btn1', 200, 'https://t.me/aliyu_task_channel')">ስራ</button>
+  </div>
+
+  <div class="task">
+    <div><h4>ቪዲዮ ይመልከቱ</h4><p>+200 ነጥብ</p></div>
+    <button id="btn2" onclick="openTask(this, 'btn2', 200, 'Https://youtube.com/@aliyutaskofficial?si=3bUCnVGQGMH3ArBc')">ስራ</button>
+  </div>
+
+  <div class="task">
+    <div><h4>ዩቲዩብ ሰብስክራይብ ያድርጉ</h4><p>+200 ነጥብ</p></div>
+    <button id="btn3" onclick="openTask(this, 'btn3', 200, 'Https://youtube.com/@aliyutaskofficial?si=3bUCnVGQGMH3ArBc')">ስራ</button>
+  </div>
+
+  <div class="task">
+    <div><h4>ቲክቶክ ፎሎው ያድርጉ</h4><p>+200 ነጥብ</p></div>
+    <button id="btn4" onclick="openTask(this, 'btn4', 200, 'https://www.tiktok.com/@Aleyu3336')">ስራ</button>
+  </div>
+
+  <div class="task">
+    <div><h4>ለጓደኛዎ ያጋሩ</h4><p>+200 ነጥብ</p></div>
+    <button id="btn5" onclick="openTask(this, 'btn5', 200, 'https://t.me/aliyu_task_channel')">ስራ</button>
+  </div>
+
+  <button class="withdraw-btn" onclick="withdraw()">ብር ለመጠየቅ (Withdraw)</button>
+</div>
+
+<script>
+let pts = parseInt(localStorage.getItem('pts')) || 0;
+document.getElementById('points').innerText = pts;
+
+['btn1','btn2','btn3','btn4','btn5'].forEach(id => {
+  if (localStorage.getItem(id) === '1') {
+    let b = document.getElementById(id);
+    if(b){ b.innerText = 'ተጠናቋል ✓'; b.disabled = true; }
+  }
+});
+
+function openTask(b, id, p, url) {
+  window.open(url, '_blank');
+  pts += p;
+  localStorage.setItem('pts', pts);
+  localStorage.setItem(id, '1');
+  document.getElementById('points').innerText = pts;
+  b.innerText = 'ተጠናቋል ✓';
+  b.disabled = true;
+}
+
+function withdraw() {
+  if (pts >= 1000) {
+    alert("እንኳን ደስ አለዎት! 1000 ነጥብ ሞልተዋል። እባክዎን የቴሌብር/ባንክ ቁጥርዎን ለቦቱ ይላኩ።");
+  } else {
+    alert("ብር ለማውጣት ቢያንስ 1000 ነጥብ ያስፈልግዎታል! አሁን ያለዎት ነጥብ፦ " + pts);
+  }
+}
 </script>
 
 </body>
